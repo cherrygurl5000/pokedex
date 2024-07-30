@@ -1,0 +1,30 @@
+{
+    "short_name": "Pokedex",
+    "name": "Pokemon Pokedex",
+    "menu": [
+        {},
+        {}
+    ],
+    "titles": [
+        {
+        "header": "name",
+        "image": "Image of ",
+        "cat": "category",
+        "type": "type:",
+        "reg": "regions:",
+        "desc": "description:",
+        "imHt": "Imperial Height: ",
+        "imWt": "Imperial Weight: ",
+        "mHt": "Metric Height: ",
+        "mWt": "Metric Weight: ",
+        "moves": "Possible Moves: "
+        },
+        {
+        "header": "name",
+        "image": "Image of ",
+        "cat": "category",
+        "type": "type: ",
+        "reg": "regions: "   
+        }
+    ]
+}
