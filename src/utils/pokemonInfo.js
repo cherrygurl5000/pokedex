@@ -5,7 +5,7 @@ export async function getPokemon() {
       https://github.com/veekun/pokedex/issues/218#issuecomment-339841781 for removing characters in description text
       https://pokeapi.co/api/v2/region/ for all regions 
       https://pokeapi.co/api/v2/pokemon-form/<pokemon name> or <pokemon id>
-      https://pokeapi.co/api/v2/pokemon/{id or name}/encounters
+      https://pokeapi.co/api/v2/pokemon/{id or name}/encounters for pokemon encounters
       https://pokeapi.co/api/v2/evolution-chain/232/ for evolution, but isn't working properly
       https://img.pokemondb.net/artwork/${pokemonName}.jpg for images
       https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/025.png for images using 3 digit id
@@ -20,14 +20,17 @@ export async function getPokemon() {
 }
 
 export async function getPokemonData(pokemonName) {
-    const res1 = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-    const data1 = await res1.json()
-
+    // const res1 = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+    // const data1 = await res1.json()
+    const data1 = await getBasics(pokemonName)
     // Find all relevant data and break it into more functional pieces
     const basic = await basicInfo(data1)
 
     // Get images based on the id
     const url = `https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${basic.fullId}.png`
+
+    // Get the Pokemon regions from where they can be encountered
+    const regions = await encounters(pokemonName)
 
     // Get the evolution chain using the Pokemon name
     const res2 = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`)
@@ -75,9 +78,16 @@ export async function getPokemonData(pokemonName) {
     }
     const evo = await evolution(evoFrom, evoMid, evoTo)
     //console.log( data2, desc, evoFrom, evoMid, evoTo)
-    //console.log(basic)
+    //console.log(basic, evo, fullDesc, regions)
 
-    return {basic, evo, fullDesc}
+    return {pokemonName, basic, evo, fullDesc, regions}
+}
+
+async function getBasics(pokemonName) {
+    const res1 = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+    const data1 = await res1.json()
+
+    return await data1
 }
 
 async function basicInfo(basics) {
@@ -107,13 +117,17 @@ async function basicInfo(basics) {
     const allMoves = moves.map(move => move.move.name.toLowerCase())
     const jointMoves = allMoves.map(index => index.charAt(0).toUpperCase() + index.slice(1)).join(', ')
 
-    let fullId = id.toString()
-    if (fullId.length == 1) fullId = "00" + fullId
-    else if (fullId.length == 2) fullId = "0" + fullId
-
-    // console.log(fullId)
+    const fullId = await getFullId(id)
 
     return {fullId, metricHt, metricWt, imperialHt, imperialWt, jointType, jointMoves}
+}
+
+async function getFullId(id) {
+    let fullId = id.toString()
+    if (fullId.length === 1) fullId = "00" + fullId
+    else if (fullId.length === 2) fullId = "0" + fullId
+
+    return fullId
 }
 
 async function description(arr) {
@@ -169,16 +183,49 @@ async function evolution(start, middle, finish) {
         evo.push(finish)
     }
 
-    console.log(evo)
-    return evo
+    // Get the urls for the evolutions from the 3-digit ids out of the basic info for each form
+    let ids = []
+    for (let i = 0; i < evo.length; i++) {
+        if (evo[i] !== noEvo) {
+            let tried = await getBasics(evo[i])
+            let { id } = await tried
+            id = await getFullId(id)
+            ids.push(`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${id}.png`)
+            //console.log({ tried, id, ids })
+        }
+    }
+
+    return { evo, ids }
+}
+
+async function encounters(pokemonName) {
+    // Get a list of all regions to compare to Pokemon encounters
+    const regionRes = await fetch('https://pokeapi.co/api/v2/region/')
+    const regionData = await regionRes.json()
+    const regionArr = await regionData.results
+    const regions = await regionArr.map(region => region.name)
+
+    // Find the encounters of the pokemon and add the regions that it can be found in
+    const pokeRegionRes = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}/encounters`)
+    const pokeRegionData = await pokeRegionRes.json()
+    const pokeRegionArr = await pokeRegionData.map(region => region.location_area.name.split('-')[0])
+    const firstWord = [...new Set(pokeRegionArr)]
+    let matchedRegion = []
+    for (let i = 0; i < regions.length; i++) {
+        matchedRegion.push(firstWord.filter(region => region === regions[i]))
+    }
+    let pokeRegion = matchedRegion.filter(region => region.length > 0).join().split(',')
+
+    //console.log(regions, firstWord, matchedRegion, pokeRegion)
+    return pokeRegion
 }
 
 getPokemonData('pikachu')
-// getPokemonData('bulbasaur')
-//  getPokemonData('electrode')
-// getPokemonData('mareep')
-// getPokemonData('shinx')
-// getPokemonData('luxio')
-// getPokemonData('lunatone')
-// getPokemonData('lurantis')
+getPokemonData('bulbasaur')
+ getPokemonData('electrode')
+getPokemonData('mareep')
+getPokemonData('shinx')
+getPokemonData('luxio')
+getPokemonData('lunatone')
+getPokemonData('lurantis')
 // //getPokemon();
