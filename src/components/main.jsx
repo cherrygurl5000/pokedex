@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { getPokemon, getPokemonData } from '../utils/pokemonInfo';
 import Pagination from './pagination';
 import { paginate } from '../utils/paginate';
+import _ from 'lodash';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'font-awesome/css/font-awesome.css'
 import Card from './card';
@@ -71,7 +72,9 @@ class MainSection extends Component {
         return listItems
     }
     getPageData = (list, currentPage, pageSize) => {
-        const pokemonList = paginate( list, currentPage, pageSize)
+        const sorted = _.orderBy(list, 'pokemonName', 'asc')
+        const pokemonList = paginate(sorted, currentPage, pageSize)
+        
 
         return { totalCount: list.length, pokemonList }
     }

@@ -222,12 +222,18 @@ async function encounters(pokemonName) {
     return pokeRegion
 }
 
-// getPokemonData('pikachu')
-// getPokemonData('bulbasaur')
-//  getPokemonData('electrode')
-// getPokemonData('mareep')
-// getPokemonData('shinx')
-// getPokemonData('luxio')
-// getPokemonData('lunatone')
-// getPokemonData('lurantis')
-// //getPokemon();
+/* Sample Output
+    data: Object { pokemonName: "charmander", url: "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/004.png", fullDesc: "Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail. The flame at the tip of its tail makes a sound as it burns. You can only hear it in quiet places. If it's healthy, the flame on the tip of its tail will burn vigor ously, even if it gets a bit wet. From the time it is born, a flame burns at the tip of its tail. Its life would end if the flame were to go out. It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail.", … }
+​​
+basic: Object { fullId: "004", metricHt: "0.6 m", metricWt: "8.5 kg", … }
+​​
+evo: Object { evo: (3) […], ids: (3) […] }
+​​
+fullDesc: "Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail. The flame at the tip of its tail makes a sound as it burns. You can only hear it in quiet places. If it's healthy, the flame on the tip of its tail will burn vigor ously, even if it gets a bit wet. From the time it is born, a flame burns at the tip of its tail. Its life would end if the flame were to go out. It has a preference for hot things. When it rains, steam is said to spout from the tip of its tail."
+​​
+pokemonName: "charmander"
+​​
+regions: Array [ "Kanto", "Alola" ]
+​​
+url: "https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/004.png"
+ */
