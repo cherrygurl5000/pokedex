@@ -214,18 +214,20 @@ async function encounters(pokemonName) {
     for (let i = 0; i < regions.length; i++) {
         matchedRegion.push(firstWord.filter(region => region === regions[i]))
     }
-    let pokeRegion = matchedRegion.filter(region => region.length > 0).join().split(',')
+    //let capitalRegion = matchedRegion.map(index => index.charAt(0).toUpperCase() + index.slice(1))
+    let pokeRegion = matchedRegion.filter(region => region.length > 0)
+    pokeRegion = pokeRegion.map(index => index[0].charAt(0).toUpperCase() + index[0].slice(1)).join().split(',')
 
-    //console.log(regions, firstWord, matchedRegion, pokeRegion)
+    //console.log(pokeRegion)
     return pokeRegion
 }
 
-getPokemonData('pikachu')
-getPokemonData('bulbasaur')
- getPokemonData('electrode')
-getPokemonData('mareep')
-getPokemonData('shinx')
-getPokemonData('luxio')
-getPokemonData('lunatone')
-getPokemonData('lurantis')
+// getPokemonData('pikachu')
+// getPokemonData('bulbasaur')
+//  getPokemonData('electrode')
+// getPokemonData('mareep')
+// getPokemonData('shinx')
+// getPokemonData('luxio')
+// getPokemonData('lunatone')
+// getPokemonData('lurantis')
 // //getPokemon();

@@ -3,6 +3,7 @@ import { getPokemon, getPokemonData } from '../utils/pokemonInfo';
 import Pagination from './pagination';
 import { paginate } from '../utils/paginate';
 import 'bootstrap/dist/css/bootstrap.css'
+import 'font-awesome/css/font-awesome.css'
 import Card from './card';
 
 class MainSection extends Component {
@@ -23,8 +24,8 @@ class MainSection extends Component {
     }
     render() { 
         // For pagination, we need the pageSize, the currentPage, the totalCount, and the list of Pokemon characters
-        // const { pageSize, currentPage } = this.state
-        // const { totalCount, pokemonList } = this.getPageData(this.state.list, currentPage, pageSize)
+        const { pageSize, currentPage } = this.state
+        const { totalCount, pokemonList } = this.getPageData(this.state.list, currentPage, pageSize)
         
         return (
             <>
@@ -34,7 +35,7 @@ class MainSection extends Component {
                 <ul>
                     {/* {this.handleList(pokemonList)} */}
                 </ul>
-                {/* <Pagination itemsCount={totalCount} pageSize={pageSize} onPageChange={this.handlePageChange} currentPage={currentPage} /> */}
+                <Pagination itemsCount={totalCount} pageSize={pageSize} onPageChange={this.handlePageChange} currentPage={currentPage} />
             </>
         );
     }
@@ -66,10 +67,9 @@ class MainSection extends Component {
     handleCards = info => {
         let cards = []
         for (let i = 0; i < info.length; i++) {
-            cards.push( <Card data={info[i]} />)
+            cards.push( <Card key={info[i].basic.fullId} data={info[i]} />)
         }
-        return cards
-        
+        return cards        
     }
     handleList = list => {
         // Create a list item for each pokemon in the list
