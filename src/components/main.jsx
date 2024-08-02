@@ -13,7 +13,7 @@ class MainSection extends Component {
             {name: ""}
         ],
         info: [],
-        pageSize: 4,
+        pageSize: 12,
         currentPage: 1,
     } 
     async componentDidMount() {

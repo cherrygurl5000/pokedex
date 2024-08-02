@@ -332,6 +332,10 @@ img {
   background-color: var(--bubblesColor);
 }
 
+i {
+  width: 100%;
+}
+
 .types {
   background-color: var(--typesBg);
   padding: 5px 8px;

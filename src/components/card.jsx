@@ -69,7 +69,7 @@ const Card = props => {
                         {handleRegion()}
                     </div>
                 </div>
-                <div className="row align-items-center">
+                <div className="row justify-content-around align-items-center">
                     {handleFigure()}
                 </div>
             </div>
