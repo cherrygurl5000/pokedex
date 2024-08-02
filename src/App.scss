@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=Boogaloo&family=Rum+Raisin&display=swap');
+
+:root {
+  --rumRaisin: "Rum Raisin", sans-serif;
+  --boogaloo: "Boogaloo", sans-serif;
+  --arsenal: "Arsenal SC", sans-serif;
+  --bubblesColor: rgba(176, 196, 222, 0.7);
+  --typesBg: rgba(176, 196, 222, 0.9);
+}
+
+@mixin bgImages($opaque, $link) {
+    content: ' ';
+    border-radius: 35px;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: $opaque;
+    background-image: url($link);
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+}
+
+.cards {
+  border-radius: 35px;
+  box-shadow: 5px 5px gray;
+
+  &:hover {    
+    box-shadow: 5px 5px black;
+  }
+}
+
+.allCards {
+    .grass:before {
+        @include bgImages(0.4,'https://images.unsplash.com/photo-1533460004989-cef01064af7e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z3Jhc3MlMjBhbmltYXRlZHxlbnwwfHwwfHx8MA%3D%3D');
+    }
+    .normal:before {
+        @include bgImages(0.4,'https://images.unsplash.com/photo-1470058869958-2a77ade41c02?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8anVuZ2xlJTIwYW5pbWF0ZWR8ZW58MHx8MHx8fDA%3D');
+    }
+    .bug:before {
+        @include bgImages(0.8,'https://images.unsplash.com/photo-1492506014987-8dd98e591a7a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGdyYXNzJTIwYW5pbWF0ZWR8ZW58MHx8MHx8fDA%3D');
+    }
+    .flying:before {
+        @include bgImages(1,'https://images.unsplash.com/photo-1460411794035-42aac080490a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fHNreSUyMGFuaW1hdGVkfGVufDB8fDB8fHww');
+    }
+    .psychic:before {
+        @include bgImages(0.3,'https://images.unsplash.com/photo-1707908203276-e7ad492d1285?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGdvbGRlbiUyMHJhdGlvfGVufDB8fDB8fHww');
+    }
+    .rock:before {
+        @include bgImages(0.3,'https://images.unsplash.com/photo-1455243629161-1f993797f78d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTh8fHJvY2tzJTIwYW5pbWF0ZWR8ZW58MHx8MHx8fDA%3D');
+    }
+    .ice:before {
+        @include bgImages(0.6,'https://images.unsplash.com/photo-1445966838217-f418f2601b54?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8aWNlfGVufDB8fDB8fHww');
+    }
+    .dark:before {
+        @include bgImages(0.7,'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGRhcmt8ZW58MHx8MHx8fDA%3D');
+    }
+    .fairy:before {
+        @include bgImages(0.6,'https://images.unsplash.com/photo-1499343162160-cd1441923dd3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGZhaXJ5JTIwZHVzdHxlbnwwfHwwfHx8MA%3D%3D');
+    }
+    .fire:before {
+        @include bgImages(0.6,'https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmlyZXxlbnwwfHwwfHx8MA%3D%3D');
+    }
+    .water:before {
+        @include bgImages(1,'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8d2F0ZXJ8ZW58MHx8MHx8fDA%3D');
+    }
+    .electric:before {
+        @include bgImages(1,'https://images.unsplash.com/photo-1618690567713-89b0e7e52b1b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGxpZ2h0bmluZyUyMHN0b3JtfGVufDB8fDB8fHww');
+    }
+    .ghost:before {
+        @include bgImages(0.8,'https://images.unsplash.com/photo-1544597940-3e01ede4c04f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTU0fHxnaG9zdGx5fGVufDB8fDB8fHww');
+    }
+    .fighting:before {
+        @include bgImages(0.6,'https://images.unsplash.com/photo-1660211935543-f202eadcc15e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGJveGluZyUyMGdsb3Zlc3xlbnwwfHwwfHx8MA%3D%3D');
+    }
+    .steel:before {
+        @include bgImages(0.7,'https://images.unsplash.com/photo-1678794792900-5abfe053682e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c3RlZWx8ZW58MHx8MHx8fDA%3D');
+    }
+    .ground:before {
+        @include bgImages(0.7,'https://images.unsplash.com/photo-1563189897-af9ab1302b29?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGhvbGUlMjBpbiUyMHRoZSUyMGdyb3VuZHxlbnwwfHwwfHx8MA%3D%3D');
+    }
+    .poison:before {
+        @include bgImages(0.6,'https://images.unsplash.com/photo-1567583789793-87f44f80ab61?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fHRveGljfGVufDB8fDB8fHww');
+    }
+    .dragon:before {
+        @include bgImages(0.6,'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F6a%2F60%2Fba%2F6a60ba135c95df0f82bcc16b427c75dd.jpg&f=1&nofb=1&ipt=74524225965bf01f38a5f6049f6fcd210566f7d6e504852b9101b7f7663c7d78&ipo=images');
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+    }
+}
+
+.cardFig {
+  width: 200px;
+}
+
+img {
+  width: 100%;
+}
+
+.evolution {
+  width: 100%;
+  font-family: var(--rumRaisin);
+  text-transform: capitalize;
+  z-index: 10;
+  background-color: var(--bubblesColor);
+  padding: 8px 0px;
+}
+
+.noBg {
+    background-color: transparent;
+}
+
+.figs {
+  text-align: center;
+  width: 100%;
+  font-family: var(--boogaloo);
+  text-transform: capitalize;
+  background-color: var(--bubblesColor);
+  border-radius: 20px;
+  padding: 5px;
+
+  &:hover {
+    box-shadow: 2px 5px white;
+  }
+}
+
+.arsenal {
+  font-family: var(--arsenal);
+  font-size: large;
+}
+
+.bubble {
+  padding: 5px;
+  border-radius: 50%;
+  background-color: var(--bubblesColor);
+}
+
+.types {
+    background-color: var(--typesBg);
+    padding: 5px 8px;
+    border-radius: 15px;
+    width: 90%;
+    opacity: 1;
+
+    &:hover {
+        box-shadow: 2px 5px white;
+    }
+}

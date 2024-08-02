@@ -6,7 +6,7 @@ const Card = props => {
     function handleRegion() {
         if (regions.length > 0 && regions[0] !== "")
             return (
-                <p className="row">
+                <p className="row types">
                     <b className='mr-2'>Regions: </b>
                     <span className="arsenal">{regions.join(", ")}</span>
                 </p>
@@ -46,21 +46,29 @@ const Card = props => {
         return evolutions
     }    
     function backgroundImg() {
-        return "grass"
+        // const allTypes = [
+        //     'grass', 'normal', 'bug', 'flying', 'psychic', 'rock', 'ice', 'dark', 'fairy',
+        //     'fire', 'water', 'electric', 'ghost', 'fighting', 'steel', 'ground', 'poison', 'dragon'
+        // ]
+        let type = basic.jointType
+        type = type.split('-')
+        type = type[0].toLowerCase()
+
+        return type
     }
         
     return ( 
         <>
             <div className={"col-3 border cards m-2 " + backgroundImg()}>
                 <div className="row mt-2">
-                    <h1 className="text-center evolution"><u>{pokemonName}</u></h1>
+                    <h1 className="text-center evolution noBg"><u>{pokemonName}</u></h1>
                 </div>
                 <div className="row">
                     <figure className="col-5 cardFig">
                         <img src={url} alt={pokemonName + " Image"} />
                     </figure>
                     <div className="col-7 align-content-center">
-                        <p className="row">
+                        <p className="row types">
                             <b className='mr-2'>Type: </b>
                             <span className="arsenal">{basic.jointType}</span>                            
                         </p>

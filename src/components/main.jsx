@@ -29,7 +29,7 @@ class MainSection extends Component {
         
         return (
             <>
-                <div className="row justify-content-center">
+                <div className="row justify-content-center allCards">
                     {this.handleCards(this.state.info)}
                 </div>
                 <ul>
