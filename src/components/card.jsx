@@ -1,7 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 const Card = props => {
-    //console.log(props)
     const { pokemonName, url, basic, regions, evo } = props.data   
     function handleRegion() {
         if (regions.length > 0 && regions[0] !== "")
@@ -42,14 +41,9 @@ const Card = props => {
                 <h2 className="text-center evolution">Does Not Evolve</h2>
             )
         }
-        //console.log({ evoName, evoUrl })
         return evolutions
     }    
     function backgroundImg() {
-        // const allTypes = [
-        //     'grass', 'normal', 'bug', 'flying', 'psychic', 'rock', 'ice', 'dark', 'fairy',
-        //     'fire', 'water', 'electric', 'ghost', 'fighting', 'steel', 'ground', 'poison', 'dragon'
-        // ]
         let type = basic.jointType
         type = type.split('-')
         type = type[0].toLowerCase()

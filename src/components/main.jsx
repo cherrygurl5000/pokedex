@@ -25,16 +25,13 @@ class MainSection extends Component {
     render() { 
         // For pagination, we need the pageSize, the currentPage, the totalCount, and the list of Pokemon characters
         const { pageSize, currentPage } = this.state
-        const { totalCount, pokemonList } = this.getPageData(this.state.list, currentPage, pageSize)
+        const { totalCount, pokemonList } = this.getPageData(this.state.info, currentPage, pageSize)
         
         return (
             <>
                 <div className="row justify-content-center allCards">
-                    {this.handleCards(this.state.info)}
+                    {this.handleCards(pokemonList)}
                 </div>
-                <ul>
-                    {/* {this.handleList(pokemonList)} */}
-                </ul>
                 <Pagination itemsCount={totalCount} pageSize={pageSize} onPageChange={this.handlePageChange} currentPage={currentPage} />
             </>
         );
@@ -45,7 +42,6 @@ class MainSection extends Component {
         const getList = await getPokemon()
         const list = await getList.results
         this.setState({list})
-        //console.log(list)
         const info = await this.handleGetPokemonData(this.state.list)
         this.setState({info})
         return { info }
@@ -60,8 +56,6 @@ class MainSection extends Component {
                 info.push(await getPokemonData(listName))
             }
         }
-        //console.log(info)
-        //this.setState({info})
         return info
     }
     handleCards = info => {
@@ -77,8 +71,6 @@ class MainSection extends Component {
         return listItems
     }
     getPageData = (list, currentPage, pageSize) => {
-        //const genreMovies = currentGenre !== 'allGenresId' ? movies.filter(movie => movie.genre._id === currentGenre) : movies
-        //const sorted = _.orderBy(genreMovies, [sortColumn.column], [sortColumn.order])
         const pokemonList = paginate( list, currentPage, pageSize)
 
         return { totalCount: list.length, pokemonList }
