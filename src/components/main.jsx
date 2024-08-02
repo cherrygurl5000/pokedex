@@ -3,6 +3,7 @@ import { getPokemon, getPokemonData } from '../utils/pokemonInfo';
 import Pagination from './pagination';
 import { paginate } from '../utils/paginate';
 import 'bootstrap/dist/css/bootstrap.css'
+import Card from './card';
 
 class MainSection extends Component {
     state = { 
@@ -13,8 +14,12 @@ class MainSection extends Component {
         pageSize: 4,
         currentPage: 1,
     } 
-    componentDidMount() {
-        this.handleGetPokemon()
+    async componentDidMount() {
+        const pokemonData = await this.handleGetPokemon()
+        const list = this.state.list
+        const { info } = pokemonData  
+        
+        return info
     }
     render() { 
         // For pagination, we need the pageSize, the currentPage, the totalCount, and the list of Pokemon characters
@@ -23,6 +28,9 @@ class MainSection extends Component {
         
         return (
             <>
+                <div className="row justify-content-center">
+                    {this.handleCards(this.state.info)}
+                </div>
                 <ul>
                     {/* {this.handleList(pokemonList)} */}
                 </ul>
@@ -37,8 +45,9 @@ class MainSection extends Component {
         const list = await getList.results
         this.setState({list})
         //console.log(list)
-        this.handleGetPokemonData(this.state.list)
-        return await list
+        const info = await this.handleGetPokemonData(this.state.list)
+        this.setState({info})
+        return { info }
     }
     handleGetPokemonData = async (list) => {
         // Use the Pokemon list to get all of the data for each pokemon
@@ -51,7 +60,16 @@ class MainSection extends Component {
             }
         }
         //console.log(info)
-        this.setState({info})
+        //this.setState({info})
+        return info
+    }
+    handleCards = info => {
+        let cards = []
+        for (let i = 0; i < info.length; i++) {
+            cards.push( <Card data={info[i]} />)
+        }
+        return cards
+        
     }
     handleList = list => {
         // Create a list item for each pokemon in the list

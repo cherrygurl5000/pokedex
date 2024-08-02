@@ -80,7 +80,7 @@ export async function getPokemonData(pokemonName) {
     //console.log( data2, desc, evoFrom, evoMid, evoTo)
     //console.log(basic, evo, fullDesc, regions)
 
-    return {pokemonName, basic, evo, fullDesc, regions}
+    return {pokemonName, url, basic, evo, fullDesc, regions}
 }
 
 async function getBasics(pokemonName) {
