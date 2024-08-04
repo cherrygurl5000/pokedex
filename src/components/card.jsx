@@ -28,8 +28,9 @@ const Card = props => {
                     </figure>
                 )
                 if (i < evoName.length - 1) {
+                    const colName = evoName.length === 2 ? 'col-2' : 'col'
                     evolutions.push(
-                        <span key={evoName[i] + 'Span'} className="col text-center bubble">
+                        <span key={evoName[i] + 'Span'} className={colName + " text-center bubble"}>
                             <i className="fa fa-arrow-right" aria-hidden="true"></i>
                         </span>
                     )
@@ -53,7 +54,11 @@ const Card = props => {
         
     return ( 
         <>
-            <div className={"col-3 border cards m-2 " + backgroundImg()}>
+            <button
+                type="button"
+                className={"col-10 col-sm-8 col-md-6 col-lg-5 col-xl-3 border cards m-2 " + backgroundImg()}
+                data-toggle="modal" data-target={"#" + pokemonName + "Modal"}
+            >
                 <div className="row mt-2">
                     <h1 className="text-center evolution noBg"><u>{pokemonName}</u></h1>
                 </div>
@@ -72,8 +77,7 @@ const Card = props => {
                 <div className="row justify-content-around align-items-center">
                     {handleFigure()}
                 </div>
-            </div>
-            
+            </button>
         </>
     );
     

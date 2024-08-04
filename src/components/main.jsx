@@ -3,9 +3,12 @@ import { getPokemon, getPokemonData } from '../utils/pokemonInfo';
 import Pagination from './pagination';
 import { paginate } from '../utils/paginate';
 import _ from 'lodash';
+import $ from 'jquery'
+import 'bootstrap/js/dist/modal'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'font-awesome/css/font-awesome.css'
 import Card from './card';
+import Modal from './modal';
 
 class MainSection extends Component {
     state = { 
@@ -30,10 +33,13 @@ class MainSection extends Component {
         
         return (
             <>
+                {/* <button type="button" data-toggle="modal" data-target="#poke">Press</button> */}
                 <div className="row justify-content-center allCards">
                     {this.handleCards(pokemonList)}
                 </div>
                 <Pagination itemsCount={totalCount} pageSize={pageSize} onPageChange={this.handlePageChange} currentPage={currentPage} />
+                {this.handleModals(pokemonList)}
+                {/* <Modal data={'names'} /> */}
             </>
         );
     }
@@ -80,6 +86,13 @@ class MainSection extends Component {
     }
     handlePageChange = page => {
         this.setState({currentPage: page})
+    }
+    handleModals = info => {
+        let modals = []
+        for (let i = 0; i < info.length; i++) {
+            modals.push( <Modal key={info[i].basic.fullId+"modal"} data={info[i]} />)
+        }
+        return modals   
     }
 }
  
