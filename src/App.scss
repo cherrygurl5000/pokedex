@@ -95,6 +95,10 @@
 
 .cardFig {
   width: 200px;
+
+  .imgMod {
+    max-width: 200px;
+  }
 }
 
 img {
@@ -202,3 +206,24 @@ i {
         }
     }
 }
+
+.descMod {
+    border: white 5px solid;
+    box-shadow: 5px 6px 6px black;
+    background-color: plum;
+    -webkit-box-shadow: inset 0 0 10px 10px mediumpurple;
+    box-shadow: inset 0 0 10px 10px mediumpurple;
+    height: 200px;
+    overflow-y: scroll;
+
+    .typeMod {
+        font-size: 25px;
+    }
+}
+.noTop {
+    border-top: none;
+}
+.modal-content {
+    border: none;
+}
+

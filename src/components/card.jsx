@@ -1,4 +1,5 @@
 import React from 'react'
+import $ from 'jquery'
 
 const Card = props => {
     const { pokemonName, url, basic, regions, evo } = props.data   
@@ -22,7 +23,7 @@ const Card = props => {
             )
             for (let i = 0; i < evoName.length; i++) {
                 evolutions.push(
-                    <figure key={evoName[i]} className="col-3">
+                    <figure key={evoName[i]} className="col-3" role="button" onClick={() => handleClick(evoName[i])}>
                         <img src={evoUrl[i]} alt={evoName[i] + ' Image'} />
                         <figcaption className="figs">{ evoName[i] }</figcaption>
                     </figure>
@@ -43,7 +44,17 @@ const Card = props => {
             )
         }
         return evolutions
-    }    
+    }       
+    const handleClick = current => {
+        const prev = "#" + pokemonName.toLowerCase() + "Modal"
+        const next = "#" + current + "Modal"
+        console.log({prev, next})
+        if (prev !== next) {
+            $(prev).modal('hide')
+            $('.modal').css('overflow-y', 'auto');
+            $(next).modal('show')
+        }
+    }
     function backgroundImg() {
         let type = basic.jointType
         type = type.split('-')
