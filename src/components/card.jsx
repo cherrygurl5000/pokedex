@@ -54,6 +54,10 @@ const Card = props => {
             $('.modal').css('overflow-y', 'auto');
             $(next).modal('show')
         }
+        else {
+            if ($(prev).modal('show') !== true)
+                $(prev).modal('show')
+        }
     }
     function backgroundImg() {
         let type = basic.jointType
@@ -65,30 +69,34 @@ const Card = props => {
         
     return ( 
         <>
-            <button
-                type="button"
+            <div
                 className={"col-10 col-sm-8 col-md-6 col-lg-5 col-xl-3 border cards m-2 " + backgroundImg()}
-                data-toggle="modal" data-target={"#" + pokemonName + "Modal"}
             >
                 <div className="row mt-2">
                     <h1 className="text-center evolution noBg"><u>{pokemonName}</u></h1>
                 </div>
-                <div className="row">
-                    <figure className="col-5 cardFig">
-                        <img src={url} alt={pokemonName + " Image"} />
-                    </figure>
-                    <div className="col-7 align-content-center">
-                        <p className="row types">
-                            <b className='mr-2'>Type: </b>
-                            <span className="arsenal">{basic.jointType}</span>                            
-                        </p>
-                        {handleRegion()}
-                    </div>
-                </div>
+                <button
+                    type="button"
+                    className="row w-100 align-items-center modalTrig"
+                    data-toggle="modal" data-target={"#" + pokemonName + "Modal"}
+                    >
+                    {/* <div className="row">                     */}
+                        <figure className="col-6 cardFig">
+                            <img src={url} alt={pokemonName + " Image"} />
+                        </figure>
+                        <div className="col ml-4 align-content-center">
+                            <p className="row types">
+                                <b className='mr-2'>Type: </b>
+                                <span className="arsenal">{basic.jointType}</span>                            
+                            </p>
+                            {handleRegion()}
+                        </div>
+                {/* </div> */}
+                </button>
                 <div className="row justify-content-around align-items-center">
                     {handleFigure()}
                 </div>
-            </button>
+            </div>
         </>
     );
     

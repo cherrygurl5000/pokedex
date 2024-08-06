@@ -154,9 +154,9 @@ i {
     width: 90%;
     opacity: 1;
 
-    &:hover {
-        box-shadow: 2px 5px white;
-    }
+    // &:hover {
+    //     box-shadow: 2px 5px white;
+    // }
 }
 
 .textureBg {
@@ -226,4 +226,10 @@ i {
 .modal-content {
     border: none;
 }
-
+.modalTrig {
+    border: none;
+    background-color: transparent;
+    figure img {
+        width: 200px;
+    }
+}
