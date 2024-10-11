@@ -48,7 +48,7 @@ const Card = props => {
     const handleClick = current => {
         const prev = "#" + pokemonName.toLowerCase() + "Modal"
         const next = "#" + current + "Modal"
-        console.log({prev, next})
+        //console.log({prev, next})
         if (prev !== next) {
             $(prev).modal('hide')
             $('.modal').css('overflow-y', 'auto');

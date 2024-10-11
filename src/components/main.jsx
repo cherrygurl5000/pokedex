@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import { getPokemon, getPokemonData } from '../utils/pokemonInfo';
-import Pagination from './pagination';
-import { paginate } from '../utils/paginate';
-import _ from 'lodash';
-import $ from 'jquery'
+import { getPokemon, getPokemonData } from '../utils/pokemonInfo'
+import Pagination from './pagination'
+import { paginate } from '../utils/paginate'
+import _ from 'lodash'
 import 'bootstrap/js/dist/modal'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'font-awesome/css/font-awesome.css'
-import Card from './card';
-import Modal from './modal';
+import Card from './card'
+import Modal from './modal'
 
 class MainSection extends Component {
     state = { 
@@ -21,7 +20,6 @@ class MainSection extends Component {
     } 
     async componentDidMount() {
         const pokemonData = await this.handleGetPokemon()
-        const list = this.state.list
         const { info } = pokemonData  
         
         return info
