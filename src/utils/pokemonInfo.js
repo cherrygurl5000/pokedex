@@ -12,10 +12,9 @@ export async function getPokemon() {
       https://pokeapi.co/api/v2/pokemon?offset=300&limit=1303
       
   */
-  const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=30')
+    const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=30')
     const data = await res.json()
 
-    //console.log(allData)
     return await data
 }
 

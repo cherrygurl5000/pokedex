@@ -19,6 +19,7 @@ class MainSection extends Component {
         currentPage: 1,
     } 
     async componentDidMount() {
+        // Pull in the pokemon data after the component mounts in order to ensure the info has a place to go
         const pokemonData = await this.handleGetPokemon()
         const { info } = pokemonData  
         
