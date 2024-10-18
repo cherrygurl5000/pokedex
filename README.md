@@ -1,3 +1,5 @@
+Pokedex built on React and Bootstrap to showcase various Pokemon. The cards show the Pokemon evolutions, regions, biometrics, and abilities.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
